@@ -2,6 +2,11 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
 /* BookingForm.css */
+.heading{
+  color: #FFFFFF;
+  margin-top: 80px;
+  text-align: center;
+}
 .booking-form {
     margin: auto;
     margin-top: 40px ;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
 import Wrapper from './style';
 
 const LoginPage = () => {
@@ -8,16 +9,31 @@ const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Dummy validation — replace with real auth logic
-    if (email === 'admin@example.com') {
-      navigate('/admin');
-    } else if (email && password) {
-      navigate('/user');
-    } else {
-      alert('Invalid credentials!');
+    try {
+      const response = await axios.post('http://localhost:8080/api/users/login', {
+        email,
+        password,
+      });
+
+      const { user, message } = response.data;
+      alert(response.data.message)
+
+      // Role-based navigation
+      if (user.role === 'admin') {
+        navigate('/admin');
+      } else if (user.role === 'user') {
+        sessionStorage.setItem('userEmail', user.email);
+        navigate('/user');
+      } else {
+        navigate('/guest');
+      }
+
+    } catch (error) {
+      console.error('Login Error:', error.response?.data || error.message);
+      alert(error.response?.data || error.message)
     }
   };
 
@@ -28,34 +44,33 @@ const LoginPage = () => {
   return (
     <Wrapper>
       <div className="login-container">
-      <h2>Login</h2>
-      <form className="login-form" onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          required
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <h2>Login</h2>
+        <form className="login-form" onSubmit={handleLogin}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          required
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-        <button type="submit">Login</button>
-      </form>
-
-      <div className="login-links">
-        <Link to="/signup">Don't have an account? Sign up</Link>
-        <button onClick={handleGuest} className="guest-button">
-          Continue as Guest
-        </button>
+          <button type="submit">Login</button>
+        </form>
+        <div className="login-links">
+          <Link to="/signup">Don't have an account? Sign up</Link>
+          <button onClick={handleGuest} className="guest-button">
+            Continue as Guest
+          </button>
+        </div>
       </div>
-    </div>
     </Wrapper>
   );
 };

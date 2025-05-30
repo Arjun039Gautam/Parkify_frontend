@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
 .slotgrid-container {
-  height: 85vh;
+  min-height: 85vh;
   padding: 2rem;
   text-align: center;
   background-color: #0b090a;
@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 }
 
 .slotgrid-slot{
-  background-color: #1F1D21;
+  
   padding: 1.5rem;
   width: 250px;
   border-radius: 10px;
@@ -32,6 +32,13 @@ const Wrapper = styled.div`
   color: #B3B3B3;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+.available {
+    background-color: #1F1D21;
+  }
+
+  .booked {
+    background-color: #2f2620;
+  }
 .slotgrid-slot:hover{
   transform: translateY(-5px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);

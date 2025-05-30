@@ -1,13 +1,19 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  .booking-cards-container {
+.heading{
+  color: #FFFFFF;
+  text-align: center;
+  background-color: #241d17;
+  margin: 0;
+}
+.booking-cards-container {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
   justify-content: center;
   background-color: #241d17;
-  height: 88vh;
+  min-height: 85vh;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 255, 255, 0.03);
 }
 

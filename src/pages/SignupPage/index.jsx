@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // 1. Import Link
+import { Link } from 'react-router-dom';
+import axios from 'axios'; // ✅ Import axios
 import Wrapper from './style';
 
 const Signup = () => {
@@ -7,10 +8,21 @@ const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    console.log('Signing up with', name, email, password);
-    // Add API call here
+
+    try {
+      const response = await axios.post('http://localhost:8080/api/users/register', {
+        name,
+        email,
+        password,
+      });
+      alert(response.data.message)
+      console.log('User Registered:', response.data.user);
+    } catch (error) {
+      console.error('Signup Error:', error.response?.data || error.message);
+      alert(error.response?.data.message || error.message)
+    }
   };
 
   return (
@@ -18,6 +30,7 @@ const Signup = () => {
       <div className="signup-container">
         <form className="signup-form" onSubmit={handleSignup}>
           <h2>Signup</h2>
+
           <input
             type="text"
             placeholder="Name"
@@ -40,8 +53,6 @@ const Signup = () => {
             required
           />
           <button type="submit">Signup</button>
-
-          {/* 2. Add login link */}
           <p style={{ marginTop: '1rem' }}>
             Already have an account? <Link to="/">Login</Link>
           </p>

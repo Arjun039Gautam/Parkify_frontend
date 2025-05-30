@@ -3,6 +3,11 @@ import styled from "styled-components";
 const Wrapper = styled.div`
 margin-top: 0;
 padding: 0;
+.heading{
+  color: #FFFFFF;
+  margin-top: 100px;
+  text-align: center;
+}
   .navbar {
     position: fixed;
     top: 0;
