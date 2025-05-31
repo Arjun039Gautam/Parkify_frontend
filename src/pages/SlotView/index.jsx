@@ -21,7 +21,17 @@ const SlotView = () => {
   return (
     <Wrapper>
       <div className="slotgrid-container">
-        <h2>Available Slots</h2>
+        <div className='arjun'>
+        <div>
+          <div className='slot-available'>Available</div> 
+          <div className='slot-book'>Booked</div> 
+        </div>
+        <h2> Slots </h2>
+        <div>
+          <p>(1-50 for 2-wheeler)</p>
+          <p>(51-80 for 4-wheeler)</p>
+        </div>
+        </div>
         <div className="slotgrid-grid">
           {slots.map((slot) => (
             <div 

@@ -57,5 +57,31 @@ const Wrapper = styled.div`
 .slot.booked {
   background-color: blue;
 }
+
+.slot-available{
+  height: 30px;
+  min-width: 100px;
+  background-color: #1F1D21;
+  align-items: center;
+  margin-bottom: 2px;
+  padding: 3px;
+  border-radius: 5px;
+}
+.slot-book{
+  height: 30px;
+  min-width: 100px;
+  background-color: #2f2620;
+  align-items: center;
+  margin-top: 2px;
+  padding: 3px;
+  border-radius: 5px;
+}
+.arjun{
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 30px;
+  justify-content: space-around;
+}
 `
 export default Wrapper
