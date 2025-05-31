@@ -161,9 +161,8 @@ const GuestBookingForm = () => {
                 disabled={!otpVerified}
               >
                 <option disabled value="">Select Type</option>
-                <option value="cycle">Cycle</option>
-                <option value="bike">Bike</option>
-                <option value="car">Car</option>
+                <option value="2-wheeler">2-wheeler</option>
+                <option value="4-wheeler">4-wheeler</option>
               </select>
 
               <button type="submit" className="submit" disabled={!otpVerified}>
