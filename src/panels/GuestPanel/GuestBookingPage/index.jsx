@@ -130,7 +130,7 @@ const GuestBookingForm = () => {
               <input
                 type="tel"
                 placeholder="Enter OTP"
-                maxLength="4"
+                maxLength="6"
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
                 required
