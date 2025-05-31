@@ -25,7 +25,7 @@ const Wrapper = styled.div`
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05), 0 2px 4px rgba(0, 0, 0, 0.6);
   transition: transform 0.3s ease;
-  margin-top: 40px;
+  margin: 40px 0;
   height: 30vh;
 }
 

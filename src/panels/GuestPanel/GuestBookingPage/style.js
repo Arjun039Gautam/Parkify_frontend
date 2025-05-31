@@ -52,7 +52,7 @@ padding: 0;
 }
 #userbooking{
   width: 100%;
-  height: 110vh; /* Add height */
+  min-height: 110vh; /* Add height */
   background-image: url("https://images.unsplash.com/photo-1573348722427-f1d6819fdf98?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-repeat: no-repeat;
   background-size: cover;       
@@ -76,6 +76,7 @@ padding: 0;
   .booking-form2 {
     margin: auto;
     margin-top: 40px ;
+    margin-bottom: 30px;
     padding: 2rem;
     width: 500px;
     box-shadow: 0 0 10px #ccc;

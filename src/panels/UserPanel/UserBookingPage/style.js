@@ -10,6 +10,7 @@ const Wrapper = styled.div`
 .booking-form {
     margin: auto;
     margin-top: 40px ;
+    margin-bottom: 70px;
     padding: 2rem;
     width: 500px;
     box-shadow: 0 0 10px #ccc;
