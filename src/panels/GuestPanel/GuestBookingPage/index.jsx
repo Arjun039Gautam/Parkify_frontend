@@ -21,7 +21,7 @@ const GuestBookingForm = () => {
 
     setSending(true);
     try {
-      await axios.post('http://localhost:8080/api/guest/otp/send', {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/guest/otp/send`, {
         emailOrPhone: email,
       });
       setOtpSent(true);
@@ -42,7 +42,7 @@ const GuestBookingForm = () => {
     }
 
     try {
-      await axios.post('http://localhost:8080/api/guest/otp/verify', {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/guest/otp/verify`, {
         emailOrPhone: email,
         otp,
       });
@@ -61,7 +61,7 @@ const GuestBookingForm = () => {
     bookedUntil.setDate(bookedUntil.getDate() + 1); // current date + 1 day
 
     try {
-      await axios.post('http://localhost:8080/api/slots/book/guest', {
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/slots/book/guest`, {
         emailOrPhone: email,
         vehicleId: vehicle,
         vehicleType,

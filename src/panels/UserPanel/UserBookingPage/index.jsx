@@ -44,7 +44,7 @@ const BookingForm = () => {
     };
     console.log(data);
     try {
-      const response = await axios.post('http://localhost:8080/api/slots/book/user', data);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/slots/book/user`, data);
       alert('Booking successful!');
       console.log(response.data);
     } catch (error) {

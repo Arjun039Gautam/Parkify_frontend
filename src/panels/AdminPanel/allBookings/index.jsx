@@ -8,7 +8,7 @@ const AllBookings = () => {
   useEffect(() => {
   const fetchBookings = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/bookings/all');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/bookings/all`);
       console.log('API Response:', response.data);
       const sortedBookings = response.data.bookings.sort(
         (a, b) => new Date(b.dateTime) - new Date(a.dateTime)

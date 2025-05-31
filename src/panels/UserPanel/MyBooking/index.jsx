@@ -9,7 +9,7 @@ const MyBooking = () => {
   const email = sessionStorage.getItem('userEmail');
   if (!email) return;
 
-  axios.get(`http://localhost:8080/api/bookings/user/${email}`)
+  axios.get(`${process.env.REACT_APP_API_URL}/api/bookings/user/${email}`)
     .then((res) => {
       console.log("API Response:", res.data)
       const sorted = res.data.bookings

@@ -8,7 +8,7 @@ const SlotView = () => {
   useEffect(() => {
     const fetchSlots = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/slots');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/slots`);
         setSlots(response.data);
       } catch (error) {
         console.error('Error fetching slots:', error);
