@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
+width: 90vw;
+margin: auto;
 /* BookingForm.css */
 .heading{
   color: #FFFFFF;
@@ -12,7 +14,7 @@ const Wrapper = styled.div`
     margin-top: 40px ;
     margin-bottom: 70px;
     padding: 2rem;
-    width: 500px;
+    width: 50vw;
     box-shadow: 0 0 10px #ccc;
     border-radius: 8px;
     display: flex;
@@ -44,6 +46,64 @@ const Wrapper = styled.div`
     background-color: #222;
     color: #fafafa;
     cursor: pointer;
+  }
+  /* .receipt {
+    width: 60vw;
+    backdrop-filter: blur(10px);
+    color: #fafafa;
+    border: 2px dotted #ccc;
+    padding: 16px;
+    margin: 20px auto;
+    border-radius: 8px;
+    justify-content: space-around;
+    align-items: center;
+} */
+
+.receipt {
+    animation: fadeIn 0.7s ease-in-out;
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 2rem auto;
+    text-align: left;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .receipt h2 {
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #333;
+  }
+
+  .receipt p {
+    margin: 0.3rem 0;
+    font-size: 1rem;
+    color: #2f2620;
+  }
+
+  .receipt strong {
+    color: #241d17;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .r-container{
+    display: flex;
+    gap: 40px;
+  }
+  img{
+    height: 150px;
   }
 `
 export default Wrapper

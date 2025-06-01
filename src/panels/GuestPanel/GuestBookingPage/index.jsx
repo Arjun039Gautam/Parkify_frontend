@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Wrapper from './style';
 import SlotView from '../../../pages/SlotView';
+import QR from '../personal visiting card.png'
 
 const GuestBookingForm = () => {
   const [email, setEmail] = useState('');
@@ -12,6 +13,7 @@ const GuestBookingForm = () => {
 
   const [vehicle, setVehicle] = useState('');
   const [vehicleType, setVehicleType] = useState('');
+  const [receiptData, setReceiptData] = useState(null); // ✅ Receipt state
 
   const sendOtp = async () => {
     if (!email) {
@@ -58,16 +60,27 @@ const GuestBookingForm = () => {
     e.preventDefault();
 
     const bookedUntil = new Date();
-    bookedUntil.setDate(bookedUntil.getDate() + 1); // current date + 1 day
+    bookedUntil.setDate(bookedUntil.getDate() + 1);
 
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/api/slots/book/guest`, {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/slots/book/guest`, {
         emailOrPhone: email,
         vehicleId: vehicle,
         vehicleType,
         bookedUntil: bookedUntil.toISOString(),
       });
+      console.log(res.data)
       alert('Booking successful!');
+
+      // ✅ Set receipt data
+      setReceiptData({
+        email,
+        vehicle,
+        vehicleType,
+        bookedUntil: bookedUntil.toLocaleString(),
+        amount: res.data.amount,
+        slotNumber: res.data.slotNumber,
+      });
 
       // Reset form
       setEmail('');
@@ -141,7 +154,7 @@ const GuestBookingForm = () => {
               </button>
             </form>
 
-            {/* Vehicle Form (Disabled Until OTP Verified) */}
+            {/* Vehicle Form */}
             <form className="booking-form2" onSubmit={handleBooking}>
               <h2>Vehicle Registration</h2>
 
@@ -169,6 +182,24 @@ const GuestBookingForm = () => {
                 Book Now
               </button>
             </form>
+
+            {/* ✅ Receipt Display */}
+            {receiptData && (
+              <div className="receipt">
+                <h2>Booking Receipt</h2>
+                <div className='r-container'>
+                  <div>
+                  <p><strong>Email:</strong> {receiptData.email}</p>
+                  <p><strong>Slot Number:</strong> {receiptData.slotNumber}</p>
+                  <p><strong>Amount:</strong> ₹{receiptData.amount}</p>
+                  <p><strong>Booked Until:</strong> {receiptData.bookedUntil}</p>
+                </div>
+                <div>
+                  <img src={QR} alt="" />
+                </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
