@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'; // ✅ Import axios
 import Wrapper from './style';
 
 const Signup = () => {
+  const navigate = useNavigate();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,8 +19,11 @@ const Signup = () => {
         email,
         password,
       });
+      const  user = response.data;
       alert(response.data.message)
       console.log('User Registered:', response.data.user);
+      sessionStorage.setItem('userEmail', user.email);
+      navigate('/user');
     } catch (error) {
       console.error('Signup Error:', error.response?.data || error.message);
       alert(error.response?.data.message || error.message)

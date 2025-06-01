@@ -18,7 +18,7 @@ const LoginPage = () => {
         password,
       });
 
-      const { user, message } = response.data;
+      const  user = response.data;
       alert(response.data.message)
 
       // Role-based navigation
