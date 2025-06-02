@@ -18,7 +18,7 @@ const LoginPage = () => {
         password,
       });
 
-      const  user = response.data;
+      const  user = response.data.user;
       alert(response.data.message)
 
       // Role-based navigation
@@ -27,9 +27,7 @@ const LoginPage = () => {
       } else if (user.role === 'user') {
         sessionStorage.setItem('userEmail', user.email);
         navigate('/user');
-      } else {
-        navigate('/guest');
-      }
+      } 
 
     } catch (error) {
       console.error('Login Error:', error.response?.data || error.message);

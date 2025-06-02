@@ -19,7 +19,7 @@ const Signup = () => {
         email,
         password,
       });
-      const  user = response.data;
+      const  user = response.data.user;
       alert(response.data.message)
       console.log('User Registered:', response.data.user);
       sessionStorage.setItem('userEmail', user.email);
