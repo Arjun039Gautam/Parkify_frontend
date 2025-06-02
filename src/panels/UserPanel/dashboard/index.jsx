@@ -10,7 +10,6 @@ const UserDashboard = () => {
     <Wrapper>
       <UserNavbar />
       <div className="dashboard-container">
-        {/* <h1 className="dashboard-heading">Welcome to Parking Dashboard</h1> */}
         <div className="dashboard-sections">
           <div id="userslotview">
             <UserSlotView />

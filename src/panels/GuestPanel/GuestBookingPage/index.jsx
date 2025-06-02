@@ -3,6 +3,7 @@ import axios from 'axios';
 import Wrapper from './style';
 import SlotView from '../../../pages/SlotView';
 import QR from '../personal visiting card.png'
+import parkifyIcon from '../parkifyIcon.png'
 
 const GuestBookingForm = () => {
   const [email, setEmail] = useState('');
@@ -98,7 +99,9 @@ const GuestBookingForm = () => {
   return (
     <Wrapper>
       <nav className="navbar">
-        <div className="navbar-logo">ParkingSystem</div>
+        <div className="navbar-logo">
+          <img src={parkifyIcon} alt="" />
+        </div>
         <ul className="navbar-links">
           <li>
             <a href="#userslotview">View Slots</a>

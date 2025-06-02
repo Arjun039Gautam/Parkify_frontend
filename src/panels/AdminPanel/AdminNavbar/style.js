@@ -22,6 +22,9 @@ const Wrapper = styled.nav`
 .navbar-logo {
   font-size: 1.5rem;
   font-weight: bold;
+  img{
+    height: 200px;
+  }
 }
 
 .navbar-links {
@@ -33,6 +36,10 @@ const Wrapper = styled.nav`
 .navbar-links a {
   color: white;
   text-decoration: none;
+}
+.navbar-links li :hover{
+  font-size: large;
+  color: #81D4FA;
 }
 `
 export default Wrapper

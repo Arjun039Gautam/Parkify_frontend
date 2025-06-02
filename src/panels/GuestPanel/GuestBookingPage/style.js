@@ -26,14 +26,12 @@ padding: 0;
     color: #FFFFFF;
   }
 
-  .navbar-logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-
-  .navbar-logo {
+ .navbar-logo {
   font-size: 1.5rem;
   font-weight: bold;
+  img{
+    height: 200px;
+  }
 }
 
 .navbar-links {
