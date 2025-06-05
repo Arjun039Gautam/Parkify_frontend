@@ -41,5 +41,30 @@ const Wrapper = styled.nav`
   font-size: large;
   color: #81D4FA;
 }
+
+@media screen and (max-width: 600px) {
+
+.navbar {
+  position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    background-color: #151315;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #FFFFFF;
+}
+  .navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 2px;
+}
+}
 `
 export default Wrapper

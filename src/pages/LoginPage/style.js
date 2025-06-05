@@ -53,7 +53,7 @@ const Wrapper = styled.div`
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
-    min-height: 50vh;
+    min-height: 60vh;
     background-color: #0d0d0d;
   }
  .container {

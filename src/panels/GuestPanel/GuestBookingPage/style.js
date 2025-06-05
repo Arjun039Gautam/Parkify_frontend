@@ -1,3 +1,4 @@
+import parking_bg from './parking_bg.avif'
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -51,7 +52,7 @@ padding: 0;
 #userbooking{
   width: 100%;
   min-height: 110vh; /* Add height */
-  background-image: url("https://images.unsplash.com/photo-1573348722427-f1d6819fdf98?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-image: url(${parking_bg});
   background-repeat: no-repeat;
   background-size: cover;       
   background-position: center;
@@ -61,7 +62,7 @@ padding: 0;
     margin: auto;
     margin-top: 40px ;
     padding: 2rem;
-    width: 500px;
+    width: 50vw;
     box-shadow: 0 0 10px #ccc;
     border-radius: 8px;
     display: flex;
@@ -76,7 +77,7 @@ padding: 0;
     margin-top: 40px ;
     margin-bottom: 30px;
     padding: 2rem;
-    width: 500px;
+    width: 50vw;
     box-shadow: 0 0 10px #ccc;
     border-radius: 8px;
     display: flex;
