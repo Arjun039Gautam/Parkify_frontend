@@ -6,35 +6,39 @@ import parkifyIcon from '../parkifyIcon.png'
 
 const LoginPage = () => {
   const navigate = useNavigate();
-
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
+  setLoading(true); // Start loading
 
-    try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/users/login`, {
-        email,
-        password,
-      });
+  try {
+    const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/users/login`, {
+      email,
+      password,
+    });
 
-      const  user = response.data.user;
-      alert(response.data.message)
+    const user = response.data.user;
+    alert(response.data.message);
 
-      // Role-based navigation
-      if (user.role === 'admin') {
-        navigate('/admin');
-      } else if (user.role === 'user') {
-        sessionStorage.setItem('userEmail', user.email);
-        navigate('/user');
-      } 
-
-    } catch (error) {
-      console.error('Login Error:', error.response?.data || error.message);
-      alert(error.response?.data || error.message)
+    // Role-based navigation
+    if (user.role === 'admin') {
+      navigate('/admin');
+    } else if (user.role === 'user') {
+      sessionStorage.setItem('userEmail', user.email);
+      navigate('/user');
     }
-  };
+
+  } catch (error) {
+    console.error('Login Error:', error.response?.data);
+    alert(error.response?.data?.error || "Login failed");
+  } finally {
+    setLoading(false); // Stop loading in both success/failure
+  }
+};
+
 
   const handleGuest = () => {
     navigate('/guest');
@@ -68,7 +72,9 @@ const LoginPage = () => {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
-                    <button class="btn" onClick={handleLogin}>Sign in</button>
+                    <button className="btn" onClick={handleLogin} disabled={loading}>
+                      {loading ? "Loading..." : "Sign in"}
+                    </button>
                     <div class="links">
                         <Link to="/signup">Don't have an account? Sign up</Link>
                         <button onClick={handleGuest} className="guest-button">
