@@ -51,7 +51,6 @@ const Wrapper = styled.div`
   .body{
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     min-height: 60vh;
     background-color: #0d0d0d;
@@ -65,7 +64,7 @@ const Wrapper = styled.div`
     width: 320px;
     padding: 20px;
     backdrop-filter: blur(10px);
-    box-shadow: 0px 0px 30px rgba(227, 228, 237, 0.37);
+    /* box-shadow: 0px 0px 30px rgba(227, 228, 237, 0.37); */
     border: 2px solid rgba(255, 255, 255, 0.18);
     border-radius: 10px;
     text-align: center;
@@ -83,11 +82,7 @@ h2 {
     opacity: 0;
     height: 0;
     overflow: hidden;
-    transition: opacity 5s ease-in-out, height 5s ease-in-out;
-}
-
-.box:hover {
-    padding: 40px;
+    transition: opacity 2s ease-in-out, height 5s ease-in-out;
 }
 
 .box:hover .form-content {
@@ -97,30 +92,21 @@ h2 {
 
 .input-box {
     margin: 10px 0;
-    color: #fff;
 }
 
 .input-box input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #00fff2;
+    border: 1px solid;
     border-radius: 5px;
     background: transparent;
     color: white;
-    outline: none;
-    transition: 0.3s;
     box-sizing: border-box;
-}
-
-.input-box input:focus {
-    border-color: #2f2620;
-    color: #ffff;
 }
 
 .btn {
     width: 100%;
     padding: 10px;
-    background: #00fff2;
     border: none;
     border-radius: 5px;
     color: black;
@@ -128,9 +114,10 @@ h2 {
     cursor: pointer;
     transition: 0.3s;
 }
-
-.btn:hover {
-    background: #ff0095;
+.btn:hover{
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
 }
 
 .links {
@@ -138,7 +125,7 @@ h2 {
 }
 
 .links a {
-    color: #ff0095;
+    color: #007bff;
     font-size: 14px;
     text-decoration: none;
 }
