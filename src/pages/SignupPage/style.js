@@ -48,6 +48,8 @@ const Wrapper = styled.div`
   cursor: pointer;
   text-decoration: underline;
 } */
+background-color: #0d0d0d;
+
   .body{
     display: flex;
     flex-direction: column;
@@ -148,6 +150,7 @@ header{
   justify-content: center;
   img{
     height: 100%;
+    width: 100%;
   }
 }
 `

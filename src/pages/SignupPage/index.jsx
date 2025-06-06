@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'; // ✅ Import axios
 import Wrapper from './style';
 import parkifyIcon from '../parkifyIcon.png'
+import { toast } from 'react-toastify'
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const Signup = () => {
     const errorMsg = 'Please enter a valid email address';
     setEmailError(errorMsg);
     console.error(errorMsg);
-    alert(errorMsg);
+    toast.error(errorMsg)
     return;
   } else {
     setEmailError('');
@@ -39,12 +40,12 @@ const Signup = () => {
       password,
     });
     const user = response.data.user;
-    alert(response.data.message);
+    toast.success(response.data.message)
     sessionStorage.setItem('userEmail', user.email);
     navigate('/user');
   } catch (error) {
     console.error('Signup Error:', error.response?.data || error.message);
-    alert(error.response?.data.error || error.message);
+    toast.error(error.response?.data.error || error.message)
   } finally {
     setLoading(false); // Stop loading
   }

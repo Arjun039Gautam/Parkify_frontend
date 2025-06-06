@@ -1,0 +1,28 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+/* Main Toast Box */
+.custom-toast {
+  border-radius: 12px;
+  /* background: #222 !important; */
+  /* color: #fff; */
+  /* font-family: 'Arial', sans-serif; */
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  padding: 10px;
+}
+
+/* Text inside Toast */
+.custom-toast-body {
+  font-size: 1rem;
+}
+
+/* Mobile View */
+@media (max-width: 480px) {
+  .custom-toast {
+    font-size: 0.85rem;
+    padding: 8px;
+    width: 90vw;
+    margin: 10px 0;
+  }
+}

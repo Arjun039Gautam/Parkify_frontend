@@ -5,6 +5,7 @@ import SlotView from '../../../pages/SlotView';
 import QR from '../personal visiting card.png';
 import parkifyIcon from '../parkifyIcon.png';
 import { FadeLoader } from 'react-spinners';
+import { toast } from 'react-toastify'
 
 const GuestBookingForm = () => {
   const [email, setEmail] = useState('');
@@ -22,7 +23,7 @@ const GuestBookingForm = () => {
 
   const sendOtp = async () => {
     if (!email) {
-      alert('Please enter your email first.');
+      toast.warning('Please enter your email first.')
       return;
     }
 
@@ -32,9 +33,9 @@ const GuestBookingForm = () => {
         emailOrPhone: email,
       });
       setOtpSent(true);
-      alert('OTP sent to ' + email);
+      toast.info('OTP sent to ' + email)
     } catch (err) {
-      alert('Failed to send OTP. Check console.');
+      toast.error('Failed to send OTP. Check console.')
       console.error(err);
     } finally {
       setSending(false);
@@ -44,7 +45,7 @@ const GuestBookingForm = () => {
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
     if (!otpSent) {
-      alert('Please send and enter the OTP first.');
+      toast.warning('Please send and enter the OTP first.')
       return;
     }
 
@@ -55,9 +56,9 @@ const GuestBookingForm = () => {
         otp,
       });
       setOtpVerified(true);
-      alert('OTP Verified! You can now book a slot.');
+      toast.success('OTP Verified! You can now book a slot.')
     } catch (err) {
-      alert('OTP Verification failed. Check console.');
+      toast.error('OTP Verification failed.')
       console.error(err);
     } finally {
       setVerifying(false);
@@ -78,8 +79,7 @@ const GuestBookingForm = () => {
         vehicleType,
         bookedUntil: bookedUntil.toISOString(),
       });
-
-      alert('Booking successful!');
+      toast.success('Booking successful!')
       setReceiptData({
         email,
         vehicle,
@@ -97,7 +97,7 @@ const GuestBookingForm = () => {
       setVehicle('');
       setVehicleType('');
     } catch (err) {
-      alert('Booking failed. Check console.');
+      toast.error('Booking failed.',err);
       console.error(err);
     } finally {
       setBooking(false);

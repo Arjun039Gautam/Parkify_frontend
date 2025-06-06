@@ -3,6 +3,7 @@ import axios from 'axios';
 import Wrapper from './style';
 import QR from './personal visiting card.png';
 import { FadeLoader } from 'react-spinners';
+import { toast } from 'react-toastify'
 
 const BookingForm = () => {
   const [email, setEmail] = useState('');
@@ -22,7 +23,7 @@ const BookingForm = () => {
     if (vehicleId && vehicleType) {
       setIsPassEnabled(true);
     } else {
-      alert('Please fill all fields');
+      toast.warning('Please fill all fields')
     }
   };
 
@@ -60,13 +61,12 @@ const BookingForm = () => {
       };
 
       setReceipt(receiptData);
-      alert('Booking successful!');
+      toast.success('Booking successful!')
       setVehicleId('');
       setVehicleType('');
       setIsPassEnabled(false);
     } catch (error) {
-      console.error('Booking failed:', error);
-      alert('Booking failed. Check console for details.');
+      toast.error('Booking failed:', error)
     } finally {
       setLoading(false); // 🔴 Stop loading
     }

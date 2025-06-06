@@ -48,12 +48,17 @@ const Wrapper = styled.div`
   cursor: pointer;
   text-decoration: underline;
 } */
+/* width: 100vw; */
+background-color: #0d0d0d;
+/* width: 100%; */
+/* height: 100vh; */
   .body{
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 60vh;
     background-color: #0d0d0d;
+    width: 100vw;
   }
  .container {
     position: relative;
@@ -141,6 +146,7 @@ h2 {
   text-decoration: underline;
 }
 header{
+  width: 100vw;
   display: flex;
   background-color: #0d0d0d;
   top: 0;
@@ -148,6 +154,7 @@ header{
   justify-content: center;
   img{
     height: 100%;
+    width: 100%;
   }
 }
 `

@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import Wrapper from './style';
 import parkifyIcon from '../parkifyIcon.png'
+import { toast } from 'react-toastify'
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const LoginPage = () => {
     });
 
     const user = response.data.user;
-    alert(response.data.message);
+    toast.success(response.data.message)
 
     // Role-based navigation
     if (user.role === 'admin') {
@@ -33,7 +34,7 @@ const LoginPage = () => {
 
   } catch (error) {
     console.error('Login Error:', error.response?.data);
-    alert(error.response?.data?.error || "Login failed");
+    toast.error(error.response?.data?.error || "Login failed")
   } finally {
     setLoading(false); // Stop loading in both success/failure
   }
@@ -41,6 +42,7 @@ const LoginPage = () => {
 
 
   const handleGuest = () => {
+    toast.success('Continue as guest')
     navigate('/guest');
   };
 
