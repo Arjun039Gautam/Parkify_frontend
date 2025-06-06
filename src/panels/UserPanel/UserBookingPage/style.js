@@ -105,5 +105,14 @@ margin: auto;
   img{
     height: 150px;
   }
+  @media screen and (max-width: 700px){
+    .r-container{
+    display: flex;
+    gap: 10px;
+  }
+  img{
+    height: 150px;
+  }
+  }
 `
 export default Wrapper
