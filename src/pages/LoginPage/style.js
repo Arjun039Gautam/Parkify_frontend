@@ -154,8 +154,22 @@ header{
   justify-content: center;
   img{
     height: 100%;
+    /* width: 100%; */
+  }
+}
+@media screen and (max-width: 600px){
+  header{
+  width: 100vw;
+  display: flex;
+  background-color: #0d0d0d;
+  top: 0;
+  height: 50vh;
+  justify-content: center;
+  img{
+    height: 100%;
     width: 100%;
   }
+}
 }
 `
 export default Wrapper
