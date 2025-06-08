@@ -22,13 +22,16 @@ const LoginPage = () => {
     });
 
     const user = response.data.user;
-    toast.success(response.data.message)
+    console.log('user: ',user)
 
     // Role-based navigation
     if (user.role === 'admin') {
+      toast.success(response.data.message)
       navigate('/admin');
     } else if (user.role === 'user') {
-      sessionStorage.setItem('userEmail', user.email);
+      // sessionStorage.setItem('userEmail', user.email);
+      localStorage.setItem('userEmail', user.email);
+      toast.success(`${user.name} successfully login`)
       navigate('/user');
     }
 

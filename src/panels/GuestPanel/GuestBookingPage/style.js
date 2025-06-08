@@ -49,9 +49,12 @@ padding: 0;
   font-size: large;
   color: #81D4FA;
 }
+#userslotview{
+  margin-top: 50px;
+}
 #userbooking{
   width: 100%;
-  min-height: 110vh; /* Add height */
+  min-height: 110vh;
   background-image: url(${parking_bg});
   background-repeat: no-repeat;
   background-size: cover;       

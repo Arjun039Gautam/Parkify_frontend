@@ -7,7 +7,7 @@ const MyBooking = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    const email = sessionStorage.getItem('userEmail');
+    const email = localStorage.getItem('userEmail');
     if (!email) return;
 
     axios.get(`${process.env.REACT_APP_API_URL}/api/bookings/user/${email}`)

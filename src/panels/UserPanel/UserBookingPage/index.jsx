@@ -14,7 +14,7 @@ const BookingForm = () => {
   const [loading, setLoading] = useState(false); // 🟢 New state
 
   useEffect(() => {
-    const storedEmail = sessionStorage.getItem('userEmail');
+    const storedEmail = localStorage.getItem('userEmail');
     setEmail(storedEmail || '');
   }, []);
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Wrapper from './style'; // Make sure you have appropriate CSS
 import parkifyIcon from '../parkifyIcon.png'
+import LoginButton from '../../../pages/logoutButton';
 
 const UserNavbar = () => {
   return (
@@ -19,6 +20,9 @@ const UserNavbar = () => {
           </li>
           <li>
             <a href="#mybookings">My Bookings</a>
+          </li>
+          <li>
+            <LoginButton />
           </li>
         </ul>
       </nav>
