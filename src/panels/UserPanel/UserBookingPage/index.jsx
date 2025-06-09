@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { toPng } from 'html-to-image'; // <-- import this
-import { useRef } from 'react'; // <-- already likely used
 import axios from 'axios';
 import Wrapper from './style';
-// import QR from '../../../../public/personal visiting card.png';
 import { FadeLoader } from 'react-spinners';
 import { toast } from 'react-toastify'
+import { toPng } from 'html-to-image'; // <-- import this
+import { useRef } from 'react'; // <-- already likely used
 
 const BookingForm = () => {
   const [email, setEmail] = useState('');
@@ -53,8 +52,6 @@ const BookingForm = () => {
 });
 
 };
-
-
 
   useEffect(() => {
     const storedEmail = localStorage.getItem('userEmail');

@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Wrapper from './style';
 import SlotView from '../../../pages/SlotView';
-import QR from '../personal visiting card.png';
 import parkifyIcon from '../parkifyIcon.png';
 import { FadeLoader } from 'react-spinners';
 import { toast } from 'react-toastify'
+import { toPng } from 'html-to-image'; // <-- import this
+import { useRef } from 'react'; // <-- already likely used
 
 const GuestBookingForm = () => {
   const [email, setEmail] = useState('');
@@ -19,7 +20,46 @@ const GuestBookingForm = () => {
 
   const [vehicle, setVehicle] = useState('');
   const [vehicleType, setVehicleType] = useState('');
-  const [receiptData, setReceiptData] = useState(null);
+  const [receipt, setReceipt] = useState(null);
+
+  const receiptRef = useRef(); // 🔁 1. Create a ref
+  
+    // 🔁 2. Image download function
+    const downloadReceipt = () => {
+    const node = receiptRef.current;
+    if (!node) return;
+  
+    const images = node.querySelectorAll('img');
+    const loadPromises = Array.from(images).map((img) => {
+      if (img.complete) return Promise.resolve();
+      return new Promise((resolve) => {
+        img.onload = resolve;
+        img.onerror = resolve;
+      });
+    });
+  
+    Promise.all(loadPromises).then(() => {
+    setTimeout(() => {
+      toPng(node, {
+        cacheBust: true,
+        pixelRatio: 2,
+        style: { animation: 'none' },
+        skipFonts: false,
+      })
+        .then((dataUrl) => {
+          const link = document.createElement('a');
+          link.download = 'booking-receipt.png';
+          link.href = dataUrl;
+          link.click();
+        })
+        .catch((err) => {
+          console.error('Image generation failed:', err);
+          toast.error('Download failed.');
+        });
+    }, 300); // 👈 Add a short delay
+  });
+  
+  };
 
   const sendOtp = async () => {
     if (!email) {
@@ -80,7 +120,7 @@ const GuestBookingForm = () => {
         bookedUntil: bookedUntil.toISOString(),
       });
       toast.success('Booking successful!')
-      setReceiptData({
+      setReceipt({
         email,
         vehicle,
         vehicleType,
@@ -212,19 +252,24 @@ const GuestBookingForm = () => {
             )}
 
             {/* Receipt Display */}
-            {receiptData && (
-              <div className="receipt">
-                <h2>Booking Receipt</h2>
-                <div className='r-container'>
-                  <div>
-                    <p><strong>Email:</strong> {receiptData.email}</p>
-                    <p><strong>Slot Number:</strong> {receiptData.slotNumber}</p>
-                    <p><strong>Amount:</strong> ₹{receiptData.amount}</p>
-                    <p><strong>Booked Until:</strong> {receiptData.bookedUntil}</p>
+            {receipt && (
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <div className="receipt" ref={receiptRef}>
+                  <h2>Booking Receipt</h2>
+                  <div className='r-container'>
+                    <div>
+                      <p><strong>Email:</strong> {receipt.email}</p>
+                      <p><strong>Slot Number:</strong> {receipt.slotNumber}</p>
+                      <p><strong>Amount:</strong> ₹{receipt.amount}</p>
+                      <p><strong>Booked Until:</strong> {receipt.bookedUntil}</p>
+                    </div>
+                    <div>
+                      <img src="/personal visiting card.png" alt="QR Code" style={{ height: '150px' }} crossOrigin="anonymous"/> 
+                    </div>
                   </div>
-                  <div>
-                    <img src={QR} alt="QR Code" />
-                  </div>
+                  <button onClick={downloadReceipt} className='download-btn'>
+                    Download
+                  </button>
                 </div>
               </div>
             )}

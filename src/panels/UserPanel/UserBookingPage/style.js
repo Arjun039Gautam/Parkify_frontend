@@ -58,13 +58,6 @@ margin: auto;
     justify-content: space-around;
     align-items: center;
 } */
-.receipt {
-  background: white;
-  color: black;
-  border: 2px solid black;
-  padding: 1rem;
-  display: block; /* ensure it's not hidden */
-}
 
 .receipt {
   max-width: 400px;

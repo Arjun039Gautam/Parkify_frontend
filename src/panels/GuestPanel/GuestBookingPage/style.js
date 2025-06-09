@@ -125,17 +125,18 @@ padding: 0;
   }
 
   .receipt {
-    animation: fadeIn 0.7s ease-in-out;
-    background-color: #ffffff;
-    border: 2px solid #e0e0e0;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: 2rem auto;
-    text-align: left;
-    font-family: 'Segoe UI', sans-serif;
-  }
+  max-width: 400px;
+  width: 100%;
+  /* margin: 2rem auto; centers horizontally */
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  text-align: left;
+  animation: none !important;
+}
 
   .receipt h2 {
     margin-bottom: 1rem;
@@ -177,7 +178,15 @@ padding: 0;
   }
   img{
     height: 150px;
+    width: auto;
   }
+  }
+
+  .download-btn{
+    background:rgb(123, 100, 85);
+    padding: 5px;
+    border-radius: 10px;
+    color: #ffffff;
   }
 `;
 
