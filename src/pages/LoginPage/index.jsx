@@ -55,11 +55,11 @@ const LoginPage = () => {
         <img src={parkifyIcon} alt="Parkify" />
       </header>
       <div className='body'>
-        <div class="container">
-            <div class="box">
+        <div className="container">
+            <div className="box">
                 <h2>LOGIN</h2>
-                <div class="form-content">
-                    <div class="input-box">
+                <div className="form-content">
+                    <div className="input-box">
                         <input
                             type="email"
                             placeholder="Email"
@@ -68,7 +68,7 @@ const LoginPage = () => {
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
-                    <div class="input-box">
+                    <div className="input-box">
                         <input
                             type="password"
                             placeholder="Password"
@@ -80,7 +80,7 @@ const LoginPage = () => {
                     <button className="btn" onClick={handleLogin} disabled={loading}>
                       {loading ? "Loading..." : "Sign in"}
                     </button>
-                    <div class="links">
+                    <div className="links">
                         <Link to="/signup">Don't have an account? Sign up</Link>
                         <button onClick={handleGuest} className="guest-button">
                             Continue as Guest
