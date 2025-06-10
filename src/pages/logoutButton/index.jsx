@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Wrapper from './style';
 import { toast } from 'react-toastify'
+import { CiLogout } from "react-icons/ci";
 
 const LoginButton = () => {
   const navigate = useNavigate();
@@ -19,9 +20,8 @@ const LoginButton = () => {
 
   return (
     <Wrapper>
-      <button onClick={logout} className="logout-btn">
-      Logout
-    </button>
+      <CiLogout onClick={logout} className="logout-btn" size={30}/>
+      <p>Logout</p>
     </Wrapper>
   );
 };

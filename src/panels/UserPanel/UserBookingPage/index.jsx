@@ -128,12 +128,12 @@ const BookingForm = () => {
           <h2>Vehicle Registration</h2>
           <input
             type="text"
-            placeholder="Vehicle ID (e.g., RJ14 SB 1242)"
+            placeholder="Vehicle ID (e.g., RJ14SB1242)"
             value={vehicleId}
-            onChange={(e) => setVehicleId(e.target.value)}
+            onChange={(e) => setVehicleId(e.target.value.toUpperCase().replace(/\s/g, ''))}
             required
-            pattern="^[A-Z]{2}[0-9]{2}\s[A-Z]{2}\s[0-9]{1,4}$"
-            title="Format: RJ14 SB 1242"
+            pattern="^[A-Z]{2}[0-9]{2}[A-Z]{2}[0-9]{1,4}$"
+            title="Format: RJ14SB1242"
           />
           <select
             value={vehicleType}

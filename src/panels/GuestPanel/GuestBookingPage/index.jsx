@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Wrapper from './style';
-import SlotView from '../../../pages/SlotView';
 import parkifyIcon from '../parkifyIcon.png';
 import { FadeLoader } from 'react-spinners';
 import { toast } from 'react-toastify'
 import { toPng } from 'html-to-image'; // <-- import this
 import { useRef } from 'react'; // <-- already likely used
+import GeneralSlotView from '../../../pages/GeneralSlotView';
 
 const GuestBookingForm = () => {
   const [email, setEmail] = useState('');
@@ -160,7 +160,7 @@ const GuestBookingForm = () => {
         <div className="dashboard-sections">
           <div id="userslotview">
             <h2>Available Slots</h2>
-            <SlotView />
+            <GeneralSlotView />
           </div>
 
           <div id="userbooking">
@@ -225,13 +225,13 @@ const GuestBookingForm = () => {
                 <h2>Vehicle Registration</h2>
                 <input
                   type="text"
-                  placeholder="Vehicle ID (e.g., RJ14 SB 1242)"
+                  placeholder="Vehicle ID (e.g., RJ14SB1242)"
                   value={vehicle}
-                  onChange={(e) => setVehicle(e.target.value)}
+                  onChange={(e) => setVehicle(e.target.value.toUpperCase().replace(/\s/g, ''))}
                   required
                   disabled={!otpVerified}
-                  pattern="^[A-Z]{2}[0-9]{2}\s[A-Z]{2}\s[0-9]{1,4}$"
-                  title="Format: RJ14 SB 1242"
+                  pattern="^[A-Z]{2}[0-9]{2}[A-Z]{2}[0-9]{1,4}$"
+                  title="Format: RJ14SB1242"
                 />
 
                 <select

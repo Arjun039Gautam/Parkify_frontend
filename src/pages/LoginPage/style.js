@@ -16,7 +16,7 @@ background-color: #0d0d0d;
 
 .box {
     position: relative;
-    height: 40vh;
+    height: 45vh;
     width: 45vw;
     padding: 20px;
     backdrop-filter: blur(10px);

@@ -6,7 +6,7 @@ background-color: #0d0d0d;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 60vh;
+    min-height: 70vh;
     background-color: #0d0d0d;
     width: 100vw;
   }
@@ -16,7 +16,7 @@ background-color: #0d0d0d;
 
 .box {
     position: relative;
-    height: 50vh;
+    height: 60vh;
     width: 45vw;
     padding: 20px;
     backdrop-filter: blur(10px);
@@ -29,6 +29,7 @@ background-color: #0d0d0d;
 @media screen and (max-width: 600px){
   .box {
     position: relative;
+    height: 110vw;
     width: 70vw;
     padding: 20px;
     backdrop-filter: blur(10px);

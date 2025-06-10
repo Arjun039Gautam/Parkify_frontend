@@ -123,5 +123,6 @@ margin: auto;
     border-radius: 10px;
     color: #ffffff;
   }
+  
 `
 export default Wrapper

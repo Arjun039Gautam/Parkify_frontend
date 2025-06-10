@@ -24,6 +24,7 @@ const Wrapper = styled.div`
     text-align: center;
     color: #333;
   } */
+  background-color: #0b090a;
   width: 100%;
   margin-top: 90px;
   #userbooking{

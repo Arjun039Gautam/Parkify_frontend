@@ -26,8 +26,9 @@ background-color: #241d17;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05), 0 2px 4px rgba(0, 0, 0, 0.6);
   transition: transform 0.3s ease;
-  margin: 40px 0;
-  height: 30vh;
+  margin: 20px 0;
+  height: 20vh;
+  background: linear-gradient(to right, #241d17,rgb(59, 47, 38));
 }
 
 @media screen and (max-width: 600px) {
@@ -41,7 +42,6 @@ background-color: #241d17;
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05), 0 2px 4px rgba(0, 0, 0, 0.6);
   transition: transform 0.3s ease;
   margin: 10px 0;
-  height: 30vh;
 }
   
 }

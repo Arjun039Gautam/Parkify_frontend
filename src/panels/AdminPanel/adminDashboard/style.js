@@ -2,6 +2,7 @@ import parking_bg from './parking_bg.avif'
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
+  background-color: #0b090a;
   width: 100%;
   margin-top: 90px;
   #userslotview{

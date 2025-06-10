@@ -1,9 +1,10 @@
 import React from 'react';
 import Wrapper from './style';
-import UserSlotView from '../../../pages/SlotView';
+import UserSlotView from '../../AdminPanel/SlotView';
 import BookingForm from '../UserBookingPage';
 import MyBooking from '../MyBooking';
 import UserNavbar from '../UserNavbar';
+import GeneralSlotView from '../../../pages/GeneralSlotView';
 
 const UserDashboard = () => {
   return (
@@ -12,7 +13,7 @@ const UserDashboard = () => {
       <div className="dashboard-container">
         <div className="dashboard-sections">
           <div id="userslotview">
-            <UserSlotView />
+            <GeneralSlotView />
           </div>
           <div id="userbooking">
             <BookingForm />

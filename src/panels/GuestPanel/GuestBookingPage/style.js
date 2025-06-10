@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
 margin-top: 0;
 padding: 0;
+background-color: #0b090a;
 .heading{
   color: #FFFFFF;
   margin-top: 100px;
@@ -45,10 +46,10 @@ padding: 0;
   color: white;
   text-decoration: none;
 }
-.navbar-links li :hover{
+/* .navbar-links li :hover{
   font-size: large;
   color: #81D4FA;
-}
+} */
 #userslotview{
   margin-top: 50px;
 }

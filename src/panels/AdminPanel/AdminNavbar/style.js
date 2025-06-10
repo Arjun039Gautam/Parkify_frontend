@@ -32,14 +32,13 @@ const Wrapper = styled.nav`
   display: flex;
   gap: 1.5rem;
 }
-
 .navbar-links a {
   color: white;
   text-decoration: none;
 }
-.navbar-links li :hover{
+/* .navbar-links li :hover{
   font-size: large;
   color: #81D4FA;
-}
+} */
 `
 export default Wrapper

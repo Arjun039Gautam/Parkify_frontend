@@ -37,10 +37,10 @@ const Wrapper = styled.nav`
   color: white;
   text-decoration: none;
 }
-.navbar-links li :hover{
+/* .navbar-links li :hover{
   font-size: large;
   color: #81D4FA;
-}
+} */
 
 @media screen and (max-width: 600px) {
 
@@ -49,7 +49,7 @@ const Wrapper = styled.nav`
     top: 0;
     left: 0;
     right: 0;
-    height: 60px;
+    height: 50px;
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -64,6 +64,14 @@ const Wrapper = styled.nav`
   list-style: none;
   display: flex;
   gap: 2px;
+}
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-right: 10px;
+  img{
+    height: 150px;
+  }
 }
 }
 `
