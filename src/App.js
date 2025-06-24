@@ -28,7 +28,6 @@ function App() {
   return (
     <>
       <Router>
-        <RedirectOnLogin />
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />

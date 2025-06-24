@@ -62,7 +62,7 @@ h2 {
 }
 
 .input-box input {
-    width: 100%;
+    width: 90%;
     padding: 20px;
     border: 1px solid;
     border-radius: 25px;
@@ -73,20 +73,25 @@ h2 {
 }
 
 .btn {
-    width: 100%;
+    width: 90%;
     padding: 20px;
-    border: 1px solid;
+    /* border: 1px solid; */
     border-radius: 25px;
-    color: black;
+    color: #ffffff;
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
     margin-bottom: 15px;
+    background: linear-gradient(to right, #241d17,rgb(104, 82, 67));
 }
 .btn:hover{
-  background: transparent;
+  background: linear-gradient(to right,rgb(26, 21, 16),rgb(76, 53, 37));
   color: #fff;
-  border: 1px solid #fff;
+  /* border: 1px solid #fff; */
+}
+.btn:active{
+  background: linear-gradient(to right,rgb(26, 21, 16),rgb(76, 53, 37));
+  color: #fff;
 }
 
 .links {
