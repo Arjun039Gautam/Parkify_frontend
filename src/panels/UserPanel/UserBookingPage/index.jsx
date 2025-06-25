@@ -94,6 +94,8 @@ const BookingForm = () => {
 
       const receiptData = {
         email: email,
+        vehicleId: vehicleId,
+        vehicleType: vehicleType,
         slotNumber: response.data.slotNumber,
         amount: response.data.amount,
         bookedDate: new Date().toISOString().split('T')[0],
@@ -182,6 +184,8 @@ const BookingForm = () => {
           <p><strong>Amount:</strong> ₹{receipt.amount}</p>
           <p><strong>Booked Date:</strong> {receipt.bookedDate}</p>
           <p><strong>Booked Until:</strong> {receipt.bookedUntil}</p>
+          <p><strong>Vehicle No.:</strong> {receipt.vehicleId}</p>
+          <p><strong>Vehicle Type:</strong> {receipt.vehicleType}</p>
         </div>
         <div>
           <img src="/personal visiting card.png" alt="QR Code" style={{ height: '150px' }} crossOrigin="anonymous"/> 

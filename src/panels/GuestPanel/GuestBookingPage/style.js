@@ -137,6 +137,7 @@ background-color: #0b090a;
   font-family: 'Segoe UI', sans-serif;
   text-align: left;
   animation: none !important;
+  margin-bottom: 40px;
 }
 
   .receipt h2 {

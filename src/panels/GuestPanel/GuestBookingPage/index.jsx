@@ -262,6 +262,8 @@ const GuestBookingForm = () => {
                       <p><strong>Slot Number:</strong> {receipt.slotNumber}</p>
                       <p><strong>Amount:</strong> ₹{receipt.amount}</p>
                       <p><strong>Booked Until:</strong> {receipt.bookedUntil}</p>
+                      <p><strong>Vehicle No.:</strong> {receipt.vehicle}</p>
+                      <p><strong>Vehicle Type:</strong> {receipt.vehicleType}</p>
                     </div>
                     <div>
                       <img src="/personal visiting card.png" alt="QR Code" style={{ height: '150px' }} crossOrigin="anonymous"/> 

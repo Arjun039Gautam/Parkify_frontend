@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   }
   #allbooking{
   width: 100%;
-  height: 100vh; /* Add height */
+  height: 85vh; /* Add height */
   background-image: linear-gradient(to bottom, rgba(36, 29, 23, 0) 60%, #241d17 100%), url(${parking_bg});
   background-repeat: no-repeat;
   background-size: cover;       

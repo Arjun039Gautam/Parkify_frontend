@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
 background-color: #241d17;
+min-height: 80vh;
 .heading{
   color: #FFFFFF;
   text-align: center;
@@ -14,7 +15,7 @@ background-color: #241d17;
   gap: 1.5rem;
   justify-content: center;
   background-color: #241d17;
-  min-height: 85vh;
+  min-height: 75vh;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 255, 255, 0.03);
 }
 

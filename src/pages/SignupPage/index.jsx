@@ -86,6 +86,28 @@ const Signup = () => {
     handleSendOtp();
   };
 
+  const handleOtpKeyDown = (e, index) => {
+  if (e.key === 'Backspace') {
+    e.preventDefault(); // prevent default behavior
+
+    const updatedOtp = [...otpInputs];
+
+    if (otpInputs[index] === '') {
+      // move back if current is already empty
+      if (index > 0) {
+        updatedOtp[index - 1] = '';
+        setOtpInputs(updatedOtp);
+        document.getElementById(`otp-${index - 1}`)?.focus();
+      }
+    } else {
+      // clear current if not empty
+      updatedOtp[index] = '';
+      setOtpInputs(updatedOtp);
+    }
+  }
+};
+
+
   return (
     <Wrapper>
       <header>
@@ -148,10 +170,13 @@ const Signup = () => {
             <input
               key={i}
               id={`otp-${i}`}
-              type="text"
+              type="tel"
+              inputMode="numeric"
+              pattern="[0-9]*"
               maxLength="1"
               value={digit}
               onChange={(e) => handleOtpChange(i, e.target.value)}
+              onKeyDown={(e) => handleOtpKeyDown(e, i)}
             />
           ))}
         </div>

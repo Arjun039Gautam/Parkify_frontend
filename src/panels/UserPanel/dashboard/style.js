@@ -36,6 +36,9 @@ const Wrapper = styled.div`
   background-position: center;
   overflow: hidden;
 }
+#mybookings{
+  min-height: 85vh;
+}
 `;
 
 export default Wrapper;
