@@ -26,7 +26,7 @@ const Wrapper = styled.div`
   } */
   background-color: #0b090a;
   width: 100%;
-  margin-top: 90px;
+  padding-top: 90px;
   #userbooking{
   width: 100%;
   min-height: 100vh; /* Add height */

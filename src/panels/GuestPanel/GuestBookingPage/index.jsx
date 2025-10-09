@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import Wrapper from './style';
 import parkifyIcon from '../parkifyIcon.png';
 import { FadeLoader } from 'react-spinners';
-import { toast } from 'react-toastify'
-import { toPng } from 'html-to-image'; // <-- import this
-import { useRef } from 'react'; // <-- already likely used
+import { toast } from 'react-toastify';
+import { toPng } from 'html-to-image';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import GeneralSlotView from '../../../pages/GeneralSlotView';
 
 const GuestBookingForm = () => {
@@ -22,13 +22,13 @@ const GuestBookingForm = () => {
   const [vehicleType, setVehicleType] = useState('');
   const [receipt, setReceipt] = useState(null);
 
-  const receiptRef = useRef(); // 🔁 1. Create a ref
-  
-    // 🔁 2. Image download function
-    const downloadReceipt = () => {
+  const receiptRef = useRef();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const downloadReceipt = () => {
     const node = receiptRef.current;
     if (!node) return;
-  
+
     const images = node.querySelectorAll('img');
     const loadPromises = Array.from(images).map((img) => {
       if (img.complete) return Promise.resolve();
@@ -37,33 +37,32 @@ const GuestBookingForm = () => {
         img.onerror = resolve;
       });
     });
-  
+
     Promise.all(loadPromises).then(() => {
-    setTimeout(() => {
-      toPng(node, {
-        cacheBust: true,
-        pixelRatio: 2,
-        style: { animation: 'none' },
-        skipFonts: false,
-      })
-        .then((dataUrl) => {
-          const link = document.createElement('a');
-          link.download = 'booking-receipt.png';
-          link.href = dataUrl;
-          link.click();
+      setTimeout(() => {
+        toPng(node, {
+          cacheBust: true,
+          pixelRatio: 2,
+          style: { animation: 'none' },
+          skipFonts: false,
         })
-        .catch((err) => {
-          console.error('Image generation failed:', err);
-          toast.error('Download failed.');
-        });
-    }, 300); // 👈 Add a short delay
-  });
-  
+          .then((dataUrl) => {
+            const link = document.createElement('a');
+            link.download = 'booking-receipt.png';
+            link.href = dataUrl;
+            link.click();
+          })
+          .catch((err) => {
+            console.error('Image generation failed:', err);
+            toast.error('Download failed.');
+          });
+      }, 300);
+    });
   };
 
   const sendOtp = async () => {
     if (!email) {
-      toast.warning('Please enter your email first.')
+      toast.warning('Please enter your email first.');
       return;
     }
 
@@ -73,9 +72,9 @@ const GuestBookingForm = () => {
         emailOrPhone: email,
       });
       setOtpSent(true);
-      toast.info('OTP sent to ' + email)
+      toast.info('OTP sent to ' + email);
     } catch (err) {
-      toast.error('Failed to send OTP. Check console.')
+      toast.error('Failed to send OTP. Check console.');
       console.error(err);
     } finally {
       setSending(false);
@@ -85,7 +84,7 @@ const GuestBookingForm = () => {
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
     if (!otpSent) {
-      toast.warning('Please send and enter the OTP first.')
+      toast.warning('Please send and enter the OTP first.');
       return;
     }
 
@@ -96,9 +95,9 @@ const GuestBookingForm = () => {
         otp,
       });
       setOtpVerified(true);
-      toast.success('OTP Verified! You can now book a slot.')
+      toast.success('OTP Verified! You can now book a slot.');
     } catch (err) {
-      toast.error('OTP Verification failed.')
+      toast.error('OTP Verification failed.');
       console.error(err);
     } finally {
       setVerifying(false);
@@ -119,7 +118,7 @@ const GuestBookingForm = () => {
         vehicleType,
         bookedUntil: bookedUntil.toISOString(),
       });
-      toast.success('Booking successful!')
+      toast.success('Booking successful!');
       setReceipt({
         email,
         vehicle,
@@ -129,7 +128,6 @@ const GuestBookingForm = () => {
         slotNumber: res.data.slotNumber,
       });
 
-      // Reset form
       setEmail('');
       setOtp('');
       setOtpSent(false);
@@ -137,7 +135,7 @@ const GuestBookingForm = () => {
       setVehicle('');
       setVehicleType('');
     } catch (err) {
-      toast.error('Booking failed.',err);
+      toast.error('Booking failed.', err);
       console.error(err);
     } finally {
       setBooking(false);
@@ -146,20 +144,26 @@ const GuestBookingForm = () => {
 
   return (
     <Wrapper>
+      {/* Navbar */}
       <nav className="navbar">
         <div className="navbar-logo">
-          <img src={parkifyIcon} alt="" />
+          <img src={parkifyIcon} alt="Parkify Logo" />
         </div>
-        <ul className="navbar-links">
+
+        <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </div>
+
+        <ul className={`navbar-links ${menuOpen ? 'active' : ''}`}>
           <li><a href="#userslotview">View Slots</a></li>
           <li><a href="#userbooking">Book Slot</a></li>
         </ul>
       </nav>
 
+      {/* Booking Form Sections */}
       <div className="dashboard-container">
         <div className="dashboard-sections">
-          <div id="userslotview">
-            <h2>Available Slots</h2>
+          <div id="userslotview"> 
             <GeneralSlotView />
           </div>
 
@@ -169,7 +173,7 @@ const GuestBookingForm = () => {
             {/* OTP Form */}
             {verifying && (
               <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
-                <FadeLoader color="#ffff"  height={15} width={5} radius={2} margin={2}/>
+                <FadeLoader color="#ffff" height={15} width={5} radius={2} margin={2} />
               </div>
             )}
             {!verifying && (
@@ -192,7 +196,7 @@ const GuestBookingForm = () => {
                   style={{ marginBottom: '10px' }}
                 >
                   {sending ? (
-                    <span style={{ color: '#ffff' }}>Loading...</span> // <-- change color here
+                    <span style={{ color: '#ffff' }}>Loading...</span>
                   ) : (
                     otpSent ? 'Resend OTP' : 'Send OTP'
                   )}
@@ -217,7 +221,7 @@ const GuestBookingForm = () => {
             {/* Vehicle Booking Form */}
             {booking && (
               <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
-                <FadeLoader color="#ffff"  height={15} width={5} radius={2} margin={2}/>
+                <FadeLoader color="#ffff" height={15} width={5} radius={2} margin={2} />
               </div>
             )}
             {!booking && (
@@ -251,12 +255,12 @@ const GuestBookingForm = () => {
               </form>
             )}
 
-            {/* Receipt Display */}
+            {/* Receipt */}
             {receipt && (
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <div className="receipt" ref={receiptRef}>
                   <h2>Booking Receipt</h2>
-                  <div className='r-container'>
+                  <div className="r-container">
                     <div>
                       <p><strong>Email:</strong> {receipt.email}</p>
                       <p><strong>Slot Number:</strong> {receipt.slotNumber}</p>
@@ -266,10 +270,10 @@ const GuestBookingForm = () => {
                       <p><strong>Vehicle Type:</strong> {receipt.vehicleType}</p>
                     </div>
                     <div>
-                      <img src="/personal visiting card.png" alt="QR Code" style={{ height: '150px' }} crossOrigin="anonymous"/> 
+                      <img src="/personal visiting card.png" alt="QR Code" style={{ height: '150px' }} crossOrigin="anonymous" />
                     </div>
                   </div>
-                  <button onClick={downloadReceipt} className='download-btn'>
+                  <button onClick={downloadReceipt} className="download-btn">
                     Download
                   </button>
                 </div>

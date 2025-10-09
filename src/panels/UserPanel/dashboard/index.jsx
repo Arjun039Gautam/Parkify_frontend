@@ -12,13 +12,13 @@ const UserDashboard = () => {
       <UserNavbar />
       <div className="dashboard-container">
         <div className="dashboard-sections">
-          <div id="userslotview">
+          <div id="userslotview" className="section fade-in-up">
             <GeneralSlotView />
           </div>
-          <div id="userbooking">
+          <div id="userbooking" className="section fade-in">
             <BookingForm />
           </div>
-          <div id="mybookings">
+          <div id="mybookings" className="section fade-in-up">
             <MyBooking />
           </div>
         </div>
