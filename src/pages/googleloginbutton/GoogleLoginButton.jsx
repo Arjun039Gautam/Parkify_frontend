@@ -48,7 +48,7 @@ const GoogleLoginButton = () => {
       const token = credentialResponse.credential;
 
       const res = await axios.post(
-        "http://localhost:8080/auth/google-login",
+        "https://parkify-backend-cvbe.onrender.com/auth/google-login",
         { token },
         { withCredentials: true }
       );
