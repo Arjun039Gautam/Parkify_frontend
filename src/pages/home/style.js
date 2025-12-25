@@ -26,8 +26,8 @@ const Wrapper = styled.div`
   }
 
   .logo {
-    height: 220px;
-    margin-top: -100px;
+    height: 180px;
+    margin-bottom: 2rem;
     animation: float 4s ease-in-out infinite;
   }
 
@@ -175,7 +175,14 @@ const Wrapper = styled.div`
     border-radius: 15px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     backdrop-filter: blur(5px);
+    animation: fadeInUp 1s ease-in-out;
+    animation-fill-mode: both;
   }
+
+  .feature-card:nth-child(1) { animation-delay: 0.2s; }
+  .feature-card:nth-child(2) { animation-delay: 0.4s; }
+  .feature-card:nth-child(3) { animation-delay: 0.6s; }
+  .feature-card:nth-child(4) { animation-delay: 0.8s; }
 
   .feature-card:hover {
     transform: translateY(-10px);
@@ -223,7 +230,13 @@ const Wrapper = styled.div`
     border-radius: 15px;
     width: 250px;
     transition: transform 0.4s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 1s ease-in-out;
+    animation-fill-mode: both;
   }
+
+  .step-card:nth-child(1) { animation-delay: 0.3s; }
+  .step-card:nth-child(2) { animation-delay: 0.6s; }
+  .step-card:nth-child(3) { animation-delay: 0.9s; }
 
   .step-card:hover {
     transform: scale(1.08);
@@ -285,6 +298,182 @@ const Wrapper = styled.div`
   .tech-logos svg:hover {
     filter: drop-shadow(0 0 25px #f5deb3);
     transform: scale(1.2) rotate(5deg);
+  }
+
+  /* ---------- Developer Section ---------- */
+  .developer-section {
+    padding: 5rem 2rem;
+    background: linear-gradient(135deg, #1a0f0a, #29170f);
+    text-align: center;
+    position: relative;
+  }
+
+  .developer-section h2 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    background: linear-gradient(45deg, #d2b48c, #f5deb3);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .developer-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(139, 69, 19, 0.3);
+    border-radius: 20px;
+    padding: 3rem;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+  }
+
+  .developer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(139, 69, 19, 0.2);
+  }
+
+  .dev-image img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #d2b48c;
+    box-shadow: 0 0 20px rgba(210, 180, 140, 0.3);
+  }
+
+  .dev-info {
+    text-align: left;
+  }
+
+  .dev-info h3 {
+    font-size: 2.5rem;
+    color: #f5deb3;
+    margin-bottom: 0.5rem;
+  }
+
+  .dev-role {
+    color: #d2b48c;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .dev-bio {
+    color: #e0c7a8;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .social-icon {
+    color: #f5deb3;
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .social-icon:hover {
+    background: #d2b48c;
+    color: #1a0f0a;
+    transform: translateY(-3px) rotate(360deg);
+    box-shadow: 0 5px 15px rgba(210, 180, 140, 0.4);
+  }
+
+  /* ---------- Responsive Design ---------- */
+  @media screen and (max-width: 768px) {
+    .hero-section {
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .logo {
+      height: 120px;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+
+    .hero-section h1 {
+      font-size: 2.5rem;
+      line-height: 1.2;
+    }
+
+    .hero-section p {
+      font-size: 1.1rem;
+      padding: 0 1rem;
+    }
+
+    .hero-buttons {
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+    }
+
+    .hero-buttons .book-button,
+    .hero-buttons .hero-link {
+      width: 80%;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .features-section,
+    .how-it-works-section,
+    .tech-section {
+      padding: 3rem 1rem;
+    }
+
+    .features-section h2,
+    .how-it-works-section h2,
+    .tech-section h2 {
+      font-size: 2rem;
+    }
+
+    .feature-grid,
+    .how-it-works-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .step-card {
+      width: 100%;
+    }
+
+    .developer-card {
+      flex-direction: column;
+      text-align: center;
+      padding: 2rem;
+      gap: 2rem;
+    }
+
+    .dev-info {
+      text-align: center;
+    }
+
+    .social-links {
+      justify-content: center;
+    }
+
+    .dev-image img {
+      width: 150px;
+      height: 150px;
+    }
   }
 `;
 

@@ -1,9 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Wrapper from './style';
-import { FaParking, FaCalendarAlt, FaUserShield, FaDownload, FaCode } from 'react-icons/fa';
-import logo from '../parkifyIcon.png'
+import { FaParking, FaCalendarAlt, FaUserShield, FaDownload, FaCode, FaEnvelope, FaGlobe, FaLinkedin, FaGithub } from 'react-icons/fa';
+import logo from '../../assets/parkifyIcon.png'
+import arjunProfile from '../../assets/arjun-profile.jpg'
 
 const HomePage = () => {
+  const navigate = useNavigate();
   return (
     <Wrapper>
       <section className="hero-section">
@@ -12,7 +15,7 @@ const HomePage = () => {
           <h1>Parkify: Your Smart Parking Solution</h1>
           <p>Effortlessly find and book parking spots in real-time, right from your phone.</p>
           <div className="hero-buttons">
-            <button className="book-button">Book a Spot Now</button>
+            <button className="book-button" onClick={() => navigate('/guest')}>Book a Spot Now</button>
             {/* These buttons are for routing to other pages */}
             <a href="/login" className="hero-link login-btn">Login</a>
             <a href="/signup" className="hero-link signup-btn">Sign Up</a>
@@ -76,7 +79,38 @@ const HomePage = () => {
           <FaCode size={50} title="MongoDB" />
         </div>
       </section>
-    </Wrapper>
+
+      <section className="developer-section">
+        <h2>Meet the Developer</h2>
+        <div className="developer-card">
+          <div className="dev-image">
+            <img src="https://res.cloudinary.com/dancodp27/image/upload/v1766662393/arjun-profile_uiafqx.jpg" alt="Developer" />
+          </div>
+          <div className="dev-info">
+            <h3>Arjun Gautam</h3>
+            <p className="dev-role">Full Stack Developer</p>
+            <p className="dev-bio">
+              Passionate about building scalable web applications and solving real-world problems with code.
+              Created Parkify to simplify urban parking.
+            </p>
+            <div className="social-links">
+              <a href="mailto:arjungautam3007@gmail.com.com" className="social-icon" title="Email">
+                <FaEnvelope />
+              </a>
+              <a href="https://www.arjungautam.in" target="_blank" rel="noopener noreferrer" className="social-icon" title="Portfolio">
+                <FaGlobe />
+              </a>
+              <a href="https://www.linkedin.com/in/arjun-gautam-52a752283" target="_blank" rel="noopener noreferrer" className="social-icon" title="LinkedIn">
+                <FaLinkedin />
+              </a>
+              <a href="https://github.com/Arjun039Gautam" target="_blank" rel="noopener noreferrer" className="social-icon" title="GitHub">
+                <FaGithub />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </Wrapper >
   );
 };
 

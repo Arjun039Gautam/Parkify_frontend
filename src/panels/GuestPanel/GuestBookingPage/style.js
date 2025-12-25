@@ -31,7 +31,7 @@ background-color: #0b090a;
 }
 
 .navbar-logo img {
-  height: 150px;
+  height: 50px;
   transition: transform 0.4s ease;
 }
 
@@ -49,6 +49,11 @@ background-color: #0b090a;
 
 .menu-icon:hover {
   transform: rotate(10deg);
+}
+
+.menu-icon {
+  z-index: 1001;
+  position: relative;
 }
 
 .navbar-links {
@@ -103,17 +108,19 @@ background-color: #0b090a;
 
   .navbar-links {
     position: fixed;
-    top: 70px;
-    right: -100%;
-    background: rgba(26, 15, 10, 0.95);
+    top: 0;
+    right: -300px;
+    background: linear-gradient(135deg, rgba(21, 19, 21, 0.98), rgba(0, 0, 0, 0.95));
     backdrop-filter: blur(10px);
-    width: 100%;
-    height: calc(100vh - 70px);
+    width: 250px;
+    height: 100vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 2rem;
     transition: right 0.4s ease;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+    z-index: 999;
   }
 
   .navbar-links.active {
@@ -125,7 +132,7 @@ background-color: #0b090a;
   }
 
   .navbar-logo img {
-    height: 120px;
+    height: 40px;
   }
 }
 
@@ -135,7 +142,7 @@ background-color: #0b090a;
   }
 
   .navbar-logo img {
-    height: 100px;
+    height: 40px;
   }
 
   .menu-icon {
@@ -161,7 +168,8 @@ background-color: #0b090a;
   margin: auto;
   margin-top: 40px;
   padding: 2rem;
-  width: 50vw;
+  width: 90%;
+  max-width: 700px;
   box-shadow: 0 0 10px #ccc;
   border-radius: 8px;
   display: flex;

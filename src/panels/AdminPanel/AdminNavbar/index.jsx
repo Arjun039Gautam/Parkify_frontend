@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Wrapper from './style'; // Make sure you have appropriate CSS
-import parkifyIcon from '../parkifyIcon.png'
+import parkifyIcon from '../../../assets/parkifyIcon.png';
 
 const AdminNavbar = () => {
   return (

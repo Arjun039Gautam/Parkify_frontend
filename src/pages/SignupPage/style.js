@@ -206,14 +206,35 @@ const Wrapper = styled.div`
     border: 2px solid #8e44ad;
   }
 
-  @media screen and (max-width: 600px) {
-    .flip-box {
-      width: 90%;
-    }
-
     .code-inputs {
       max-width: 90%;
     }
+  }
+
+  .back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffcc80;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    z-index: 10;
+  }
+
+  .back-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(-5px);
+    box-shadow: 0 0 15px rgba(255, 204, 128, 0.3);
   }
 `;
 

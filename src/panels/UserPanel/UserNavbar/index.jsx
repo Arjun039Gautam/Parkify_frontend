@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Wrapper from './style';
-import parkifyIcon from '../parkifyIcon.png';
+import parkifyIcon from '../../../assets/parkifyIcon.png';
 import LoginButton from '../../../pages/logoutButton';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
@@ -22,10 +22,10 @@ const UserNavbar = () => {
 
         {/* Links */}
         <ul className={`navbar-links ${menuOpen ? 'active' : ''}`}>
-          <li><a href="#userslotview">View Slots</a></li>
-          <li><a href="#userbooking">Book Slot</a></li>
-          <li><a href="#mybookings">My Bookings</a></li>
-          <li className='logout'><LoginButton /></li>
+          <li><a href="#userslotview" onClick={() => setMenuOpen(false)}>View Slots</a></li>
+          <li><a href="#userbooking" onClick={() => setMenuOpen(false)}>Book Slot</a></li>
+          <li><a href="#mybookings" onClick={() => setMenuOpen(false)}>My Bookings</a></li>
+          <li className='logout' onClick={() => setMenuOpen(false)}><LoginButton /></li>
         </ul>
       </nav>
     </Wrapper>

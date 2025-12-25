@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import Wrapper from './style';
-import parkifyIcon from '../parkifyIcon.png';
+import parkifyIcon from '../../../assets/parkifyIcon.png';
+import personalVisitingCard from '../../../assets/personal visiting card.png';
 import { FadeLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
 import { toPng } from 'html-to-image';
@@ -155,15 +156,15 @@ const GuestBookingForm = () => {
         </div>
 
         <ul className={`navbar-links ${menuOpen ? 'active' : ''}`}>
-          <li><a href="#userslotview">View Slots</a></li>
-          <li><a href="#userbooking">Book Slot</a></li>
+          <li><a href="#userslotview" onClick={() => setMenuOpen(false)}>View Slots</a></li>
+          <li><a href="#userbooking" onClick={() => setMenuOpen(false)}>Book Slot</a></li>
         </ul>
       </nav>
 
       {/* Booking Form Sections */}
       <div className="dashboard-container">
         <div className="dashboard-sections">
-          <div id="userslotview"> 
+          <div id="userslotview">
             <GeneralSlotView />
           </div>
 
@@ -270,7 +271,7 @@ const GuestBookingForm = () => {
                       <p><strong>Vehicle Type:</strong> {receipt.vehicleType}</p>
                     </div>
                     <div>
-                      <img src="/personal visiting card.png" alt="QR Code" style={{ height: '150px' }} crossOrigin="anonymous" />
+                      <img src={personalVisitingCard} alt="QR Code" style={{ height: '150px' }} crossOrigin="anonymous" />
                     </div>
                   </div>
                   <button onClick={downloadReceipt} className="download-btn">

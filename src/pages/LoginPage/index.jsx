@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 import axios from "axios";
 import Wrapper from "./style";
-import parkifyIcon from "../parkifyIcon.png";
+import parkifyIcon from '../../assets/parkifyIcon.png';
 import { toast } from "react-toastify";
 import GoogleLoginButton from "../googleloginbutton/GoogleLoginButton";
 
@@ -47,6 +48,9 @@ const LoginPage = () => {
   return (
     <Wrapper>
       <div className="main-container">
+        <button className="back-btn" onClick={() => navigate('/')}>
+          <FaArrowLeft /> Back
+        </button>
         <div className="login-box">
           <header>
             <img src={parkifyIcon} alt="Parkify" />
